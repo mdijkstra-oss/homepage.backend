@@ -1,0 +1,9 @@
+# The image needs only config/. Keep everything else out of the build context.
+.git
+.gitignore
+.dockerignore
+.woodpecker.yml
+Dockerfile
+docs/
+README.md
+LICENSE
