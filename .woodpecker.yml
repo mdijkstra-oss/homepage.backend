@@ -1,0 +1,35 @@
+# Publishes the baked config image to the private Scaleway registry on git tag.
+# Ordinary commits and PRs build nothing.
+when:
+  event: tag
+
+steps:
+  # Derive the tag set and write it to .tags. The kaniko plugin reads .tags only
+  # when its own `tags`/`auto_tag` settings are unset, so we leave both unset
+  # below. A clean vX.Y.Z tag gets the full semver ladder + sha + latest; a
+  # pre-release (e.g. v1.4.0-rc1) gets only the exact version + sha (no ladder,
+  # no latest) so it never moves `latest` or emits a malformed ladder.
+  - name: compute-tags
+    image: alpine
+    commands:
+      - |
+        v="${CI_COMMIT_TAG#v}"
+        short="$(printf '%s' "$CI_COMMIT_SHA" | cut -c1-7)"
+        case "$v" in
+          *[!0-9.]*)
+            printf '%s,sha-%s' "$v" "$short" > .tags ;;
+          *)
+            major="${v%%.*}"
+            minor="${v%.*}"
+            printf '%s,%s,%s,sha-%s,latest' "$v" "$minor" "$major" "$short" > .tags ;;
+        esac
+      - cat .tags
+
+  - name: publish
+    image: woodpeckerci/plugin-kaniko
+    settings:
+      registry: rg.nl-ams.scw.cloud
+      repo: mdijkstra-homepage/site-prompts
+      username: nologin
+      password:
+        from_secret: scw_secret_key
