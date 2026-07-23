@@ -101,3 +101,7 @@ docker run --rm -p 8081:8081 \
 
 Deploying it (where it runs, how secrets and auth are wired) lives outside this
 repo.
+
+## License
+
+Released under the [Zero-Clause BSD](LICENSE) (0BSD) license — public-domain-equivalent, do whatever you like, no attribution required.
