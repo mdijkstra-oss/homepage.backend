@@ -1,0 +1,9 @@
+providers:
+  gemini:
+    protocol: gemini
+    base_url: https://generativelanguage.googleapis.com/v1beta
+    api_key_env: GEMINI_API_KEY
+    models:
+      gemini-3.5-flash:
+        name: gemini-3.5-flash
+        reasoning_effort: minimal
