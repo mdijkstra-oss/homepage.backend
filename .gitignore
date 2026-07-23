@@ -1,0 +1,8 @@
+# OS / editor cruft
+.DS_Store
+*.swp
+*~
+
+# Local env / secrets — never commit provider keys
+.env
+.env.local
