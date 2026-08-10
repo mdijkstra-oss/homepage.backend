@@ -1,0 +1,83 @@
+# Release pipeline — GitHub Actions.
+#
+# On a semver tag, build the image, validate the configuration inside it, and
+# push it once under that tag.
+#
+# The push is write-once and this workflow is the only thing enforcing it:
+# Scaleway Container Registry has no tag-immutability setting, so a re-push
+# would silently replace the image an infra pin already names. A fix gets a new
+# tag.
+
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+# The write-once guard below is check-then-act, so two runs for the same tag
+# could both find it absent before either pushed. Queue rather than cancel: a
+# cancelled run leaves the check unperformed, which is the failure being guarded.
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      IMAGE: rg.nl-ams.scw.cloud/mdijkstra-homepage/homepage-backend:${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # The tag must match VERSION — edit VERSION in the commit you tag; this
+      # fails the build if a hand-made tag diverges.
+      - name: Verify tag matches VERSION
+        run: test "v$(cat VERSION)" = "$GITHUB_REF_NAME"
+
+      - name: Build image
+        run: docker build --tag "$IMAGE" .
+
+      # Against the built image, by overriding its default command, so the
+      # validator is the same build as the server and the bytes checked are the
+      # bytes that ship.
+      - name: Validate configuration
+        run: docker run --rm "$IMAGE" validate
+
+      # The same suite CI runs, against the image about to be pushed. An image
+      # tag is never re-pushed, so this is the last point a bad one can be
+      # stopped rather than superseded.
+      - name: Contract suite
+        run: make test-slow IMAGE="$IMAGE"
+
+      # Scaleway authenticates on the secret key alone and ignores the username.
+      - name: Log in to the registry
+        run: |
+          printf '%s' '${{ secrets.REGISTRY_PUSH_SECRET_KEY }}' |
+            docker login rg.nl-ams.scw.cloud \
+              --username '${{ secrets.REGISTRY_PUSH_ACCESS_KEY }}' \
+              --password-stdin
+
+      # Anything other than a clean "absent" stops the push. Treating every
+      # failure as absent would fail open on the one mechanism enforcing
+      # write-once, so a registry that is unreachable, throttled or refusing
+      # the credential is a release that does not happen.
+      - name: Refuse a tag that already exists
+        run: |
+          if reason=$(docker manifest inspect "$IMAGE" 2>&1); then
+            echo "::error::$IMAGE already exists; image tags are write-once"
+            exit 1
+          fi
+          case "$reason" in
+            *"manifest unknown"*|*"not found"*|*"no such manifest"*) ;;
+            *)
+              echo "::error::cannot tell whether $IMAGE exists: $reason"
+              exit 1
+              ;;
+          esac
+
+      - name: Push image
+        run: docker push "$IMAGE"

@@ -1,0 +1,14 @@
+name: homepage-backend
+
+services:
+  backend:
+    build:
+      context: .
+    ports:
+      - "8081:8081"
+    env_file: .env
+    # Read-only, over the copy the image bakes, so a prompt edit costs a restart
+    # rather than a rebuild. Nothing is mounted in production.
+    volumes:
+      - ./config:/config:ro
+    restart: unless-stopped

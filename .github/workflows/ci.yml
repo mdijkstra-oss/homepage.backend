@@ -1,0 +1,44 @@
+# Quality gate — GitHub Actions.
+#
+# Two checks, both against the built image so what is exercised is what ships.
+# `validate` resolves the model alias, confirms every include exists and reports
+# orphaned Markdown. The contract suite then runs the image against a scripted
+# stub, so the composed request body, the route table, the status contract and
+# CORS are all covered without a provider, a key, or a deployment.
+#
+# The cases that need the real model — the agent's exits and its resistance to a
+# hostile visitor turn — are `make test-live`, run when the prompt changes.
+
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      IMAGE: homepage-backend:ci
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Build image
+        run: docker build --tag "$IMAGE" .
+
+      - name: Validate configuration
+        run: docker run --rm "$IMAGE" validate
+
+      # --slow adds the stalled-stream case, which waits out chancery's own
+      # 90-second bound. Worth the minute and a half on a repository whose
+      # release cadence is a tag.
+      - name: Contract suite
+        run: make test-slow IMAGE="$IMAGE"
