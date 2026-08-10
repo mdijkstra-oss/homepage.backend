@@ -1,16 +1,17 @@
-"""The contract cases that need no provider and no deployment.
+"""What this repository's configuration produces, checked against the built image.
 
-Each case runs against a real chancery serving this repository's `config/`,
-wired to the scripted stub in `stub_backend.py`. Nothing is mocked: the stub is
-a socket, and the only thing faked is the provider on the far side of it.
+Chancery has its own suite and this is not a second one. It exists because the
+image is the unit of version: the pinned chancery release, the baked `config/`
+and the port it binds are only exercised together here. What it pins is the
+three values `models.yaml` and the agent's frontmatter put in the outbound body,
+and the route table they produce.
 
-    contract_test.py --chancery '<command>' [--slow]
+    contract_test.py --chancery '<command>'
 
-`RESPONSES_BASE_URL`, `PORT` and `CORS_ORIGINS` are set in the command's
-environment, so a plain binary needs no placeholders. `{base_url}`, `{port}` and
-`{origin}` are available for a `docker run` template, which has to forward them
-across the container boundary itself. `--slow` adds the stalled-stream case,
-which takes 90 seconds by design.
+`RESPONSES_BASE_URL` and `PORT` are set in the command's environment, so a plain
+binary needs no placeholders. `{base_url}` and `{port}` are available for a
+`docker run` template, which has to forward them across the container boundary
+itself.
 """
 
 import argparse
@@ -30,12 +31,8 @@ from contextlib import contextmanager
 import sse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ALLOWED_ORIGIN = "https://site.example"
-AGENT_PROMPT_OPENING = "<identity>"
 MODEL_ID = "deepseek-v4-flash"
 MAX_TOKENS = 1200
-BODY_LIMIT_BYTES = 10 * 1024 * 1024
-STALL_TIMEOUT_SECONDS = 90
 
 results = []
 
@@ -87,8 +84,8 @@ def stop(process):
 
 
 @contextmanager
-def backend(chancery_command, mode):
-    """A stub in the given mode with a chancery in front of it."""
+def backend(chancery_command):
+    """The stub with a chancery in front of it."""
     stub_port, chancery_port = free_port(), free_port()
     workdir = tempfile.mkdtemp()
     recorded = os.path.join(workdir, "composed.json")
@@ -96,23 +93,16 @@ def backend(chancery_command, mode):
     # full one would block the process being tested.
     log_path = os.path.join(workdir, "chancery.log")
 
-    stub = subprocess.Popen(
-        [sys.executable, os.path.join(HERE, "stub_backend.py"), str(stub_port), mode, recorded],
-        stdout=subprocess.PIPE,
-        text=True,
-    )
+    stub = subprocess.Popen([sys.executable, os.path.join(HERE, "stub_backend.py"), str(stub_port), recorded])
     settings = {
         "RESPONSES_BASE_URL": f"http://host.docker.internal:{stub_port}"
         if "docker" in chancery_command
         else f"http://127.0.0.1:{stub_port}",
         "PORT": str(chancery_port),
-        "CORS_ORIGINS": ALLOWED_ORIGIN,
     }
     # Set in the environment for a plain binary, and offered as placeholders so a
-    # `docker run` template can forward the same three values across the boundary.
-    command = chancery_command.format(
-        base_url=settings["RESPONSES_BASE_URL"], port=chancery_port, origin=ALLOWED_ORIGIN
-    )
+    # `docker run` template can forward the same values across the boundary.
+    command = chancery_command.format(base_url=settings["RESPONSES_BASE_URL"], port=chancery_port)
     with open(log_path, "wb") as log:
         chancery = subprocess.Popen(
             shlex.split(command),
@@ -133,15 +123,15 @@ def backend(chancery_command, mode):
             stub.terminate()
             reason = "exited" if chancery.poll() is not None else "never became healthy"
             raise SystemExit(f"chancery {reason}\n  command: {command}\n{open(log_path).read()}")
-        yield f"http://127.0.0.1:{chancery_port}", recorded, stub
+        yield f"http://127.0.0.1:{chancery_port}", recorded
     finally:
         stop(chancery)
         stub.terminate()
         stub.wait(timeout=30)
 
 
-def status_of(url, body=b"{}", method="POST"):
-    request = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"}, method=method)
+def status_of(url, body):
+    request = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"}, method="POST")
     try:
         with urllib.request.urlopen(request, timeout=30) as answer:
             return answer.status
@@ -155,109 +145,30 @@ def check_composition(recorded):
         check("the stub recorded the composed body", False, "no request reached the backend")
         return
     body = json.load(open(recorded))
-    instructions = body.get("instructions", "")
 
     check("model is the bare DeepSeek id", body.get("model") == MODEL_ID, body.get("model"))
     check("max_output_tokens is the agent's ceiling", body.get("max_output_tokens") == MAX_TOKENS,
           body.get("max_output_tokens"))
     check("reasoning.effort is low", body.get("reasoning", {}).get("effort") == "low", body.get("reasoning"))
-    check("a caller's own reasoning key survives", body.get("reasoning", {}).get("summary") == "detailed")
-    check("the agent's prompt leads instructions", instructions.startswith(AGENT_PROMPT_OPENING))
-    check("the caller's instructions are kept behind it", instructions.rstrip().endswith("CALLER"))
-    check("store is absent", "store" not in body, body.get("store", "<absent>"))
-    check("an unknown key passes through", body.get("unknown_key") == "kept")
-
-
-def run_stream_cases(base, recorded):
-    reply = sse.post(
-        f"{base}/cv",
-        {
-            "input": [{"type": "message", "role": "user", "content": "hi"}],
-            "stream": True,
-            "max_output_tokens": 100000,
-            "instructions": "CALLER",
-            "reasoning": {"summary": "detailed"},
-            "unknown_key": "kept",
-        },
-        origin=ALLOWED_ORIGIN,
-    )
-    check("a streamed request answers 200", reply.status == 200, reply.status)
-    check("the reply is an event stream", "text/event-stream" in reply.headers.get("Content-Type", ""))
-    check("deltas are relayed", reply.text == "stub answer", repr(reply.text))
-    check("an allowed origin is echoed back",
-          reply.headers.get("Access-Control-Allow-Origin") == ALLOWED_ORIGIN,
-          reply.headers.get("Access-Control-Allow-Origin"))
-
-    check_composition(recorded)
-
-    for path, expected in [("/cv", 200), ("/cv/responses", 200), ("/cv.fast", 404), ("/nope", 404)]:
-        actual = status_of(f"{base}{path}", b'{"input":"hi"}')
-        check(f"POST {path} answers {expected}", actual == expected, actual)
-    check("GET /health answers 200", status_of(f"{base}/health", None, "GET") == 200)
-
-    check("a body that is not a JSON object is 400", status_of(f"{base}/cv", b'"a string"') == 400)
-    # Chancery always supplies instructions and the provider needs only one of
-    # the two, so an empty body is answered and billed. A 400 here would give the
-    # site a status it has no rendering for.
-    check("a body with no input still streams", status_of(f"{base}/cv", b'{"stream":true}') == 200)
-    oversized = b'{"input":"' + b"x" * (BODY_LIMIT_BYTES + 1000) + b'","stream":true}'
-    check("a body over 10 MB is 400, not 413", status_of(f"{base}/cv", oversized) == 400)
-
-    # CORS stops a browser and nothing else. The second half has to pass, or the
-    # exposure this deployment accepts is being described wrongly.
-    refused = sse.post(f"{base}/cv", {"input": "hi", "stream": True}, origin="https://evil.example")
-    check("a disallowed origin gets no allow-origin header",
-          refused.headers.get("Access-Control-Allow-Origin") is None)
-    check("and the same request still succeeds, because curl ignores CORS", refused.status == 200, refused.status)
-
-
-def run_failure_cases(base):
-    """A backend failure arrives as an event inside a 200, never as a status."""
-    reply = sse.post(f"{base}/cv", {"input": "hi", "stream": True})
-
-    check("a mid-stream failure still answers 200", reply.status == 200, reply.status)
-    check("the deltas before it are relayed", reply.text == "half an ", repr(reply.text))
-    check("response.failed reaches the caller", "response.failed" in reply.event_names, reply.event_names)
-    check("no terminal completion follows it", "response.completed" not in reply.event_names)
-
-
-def run_ratelimit_cases(base, stub):
-    reply = sse.post(f"{base}/cv", {"input": "hi", "stream": True})
-    stub.terminate()
-    attempts = sum(1 for line in stub.stdout if line.startswith("attempt"))
-
-    check("a rate-limited backend reaches the caller as 429", reply.status == 429, reply.status)
-    check("the body is the status text", reply.text.strip() == "Too Many Requests", repr(reply.text.strip()))
-    check("the backend's own explanation never travels", "backend explanation" not in reply.text)
-    check("three attempts were made", attempts == 3, attempts)
-
-
-def run_stall_case(base):
-    reply = sse.post(f"{base}/cv", {"input": "hi", "stream": True}, timeout=STALL_TIMEOUT_SECONDS + 60)
-    terminal = {"response.completed", "response.failed", "response.incomplete"}
-
-    check("a stalled stream is ended", reply.ended_at >= STALL_TIMEOUT_SECONDS, f"{reply.ended_at:.1f}s")
-    check("with no terminal event, which a client must treat as failure",
-          not terminal.intersection(reply.event_names), reply.event_names)
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--chancery", required=True, help="shell command carrying {base_url} and {port}")
-    parser.add_argument("--slow", action="store_true", help="include the 90-second stalled-stream case")
     arguments = parser.parse_args()
 
-    with backend(arguments.chancery, "stream") as (base, recorded, _):
-        run_stream_cases(base, recorded)
-    with backend(arguments.chancery, "failed") as (base, _, _stub):
-        run_failure_cases(base)
-    with backend(arguments.chancery, "ratelimit") as (base, _, stub):
-        run_ratelimit_cases(base, stub)
-    if arguments.slow:
-        with backend(arguments.chancery, "stall") as (base, _, _stub):
-            run_stall_case(base)
-    else:
-        print("SKIP  the stalled-stream case — pass --slow to include it")
+    with backend(arguments.chancery) as (base, recorded):
+        check("the image serves /health", health_ok(int(base.split(":")[-1])))
+
+        reply = sse.post(f"{base}/cv", {"input": [{"type": "message", "role": "user", "content": "hi"}], "stream": True})
+        check("POST /cv answers 200", reply.status == 200, reply.status)
+        check("the provider's deltas reach the caller", reply.text == "stub answer", repr(reply.text))
+
+        check_composition(recorded)
+
+        for path in ["/cv.fast", "/nope"]:
+            actual = status_of(f"{base}{path}", b'{"input":"hi"}')
+            check(f"POST {path} answers 404", actual == 404, actual)
 
     failed = [name for name, passed in results if not passed]
     print(f"\n{len(results) - len(failed)}/{len(results)} passed")

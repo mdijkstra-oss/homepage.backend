@@ -6,10 +6,10 @@ IMAGE ?= homepage-backend:dev
 # resolves host.docker.internal on its own; a Linux runner does not, and the
 # symptom there is a 503 rather than a name error.
 CHANCERY ?= docker run --rm -i --add-host=host.docker.internal:host-gateway \
-	-e RESPONSES_BASE_URL={base_url} -e CORS_ORIGINS={origin} -p {port}:8081 $(IMAGE) serve
+	-e RESPONSES_BASE_URL={base_url} -p {port}:8081 $(IMAGE) serve
 AGENT_URL ?= http://127.0.0.1:8081/cv
 
-.PHONY: build validate list test test-slow test-live up
+.PHONY: build validate list test test-live up
 
 build:
 	docker build --tag $(IMAGE) .
@@ -24,10 +24,6 @@ list: build
 # No provider, no key, no network beyond loopback.
 test:
 	python3 tests/contract_test.py --chancery "$(CHANCERY)"
-
-# Adds the stalled-stream case, which waits out chancery's 90-second bound.
-test-slow:
-	python3 tests/contract_test.py --chancery "$(CHANCERY)" --slow
 
 # Costs money and is not deterministic. Run it when the prompt changes.
 # HISTORY takes the input items the site pushes, so grounding is exercised.

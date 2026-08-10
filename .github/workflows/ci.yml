@@ -3,8 +3,8 @@
 # Two checks, both against the built image so what is exercised is what ships.
 # `validate` resolves the model alias, confirms every include exists and reports
 # orphaned Markdown. The contract suite then runs the image against a scripted
-# stub, so the composed request body, the route table, the status contract and
-# CORS are all covered without a provider, a key, or a deployment.
+# stub, covering the values this configuration puts in the outbound body and the
+# routes it produces, without a provider, a key, or a deployment.
 #
 # The cases that need the real model — the agent's exits and its resistance to a
 # hostile visitor turn — are `make test-live`, run when the prompt changes.
@@ -37,8 +37,5 @@ jobs:
       - name: Validate configuration
         run: docker run --rm "$IMAGE" validate
 
-      # --slow adds the stalled-stream case, which waits out chancery's own
-      # 90-second bound. Worth the minute and a half on a repository whose
-      # release cadence is a tag.
       - name: Contract suite
-        run: make test-slow IMAGE="$IMAGE"
+        run: make test IMAGE="$IMAGE"

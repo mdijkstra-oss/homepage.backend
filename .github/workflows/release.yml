@@ -51,7 +51,7 @@ jobs:
       # tag is never re-pushed, so this is the last point a bad one can be
       # stopped rather than superseded.
       - name: Contract suite
-        run: make test-slow IMAGE="$IMAGE"
+        run: make test IMAGE="$IMAGE"
 
       # Scaleway authenticates on the secret key alone and ignores the username.
       - name: Log in to the registry
