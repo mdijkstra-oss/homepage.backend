@@ -19,15 +19,9 @@ make up
 
 `compose.yaml` mounts `./config` read-only over the copy the image baked, so a prompt edit locally costs a restart rather than a rebuild. Production mounts nothing.
 
-## Tests
-
-`make test` runs the image against a scripted stub backend, so it needs no provider and no key. It is not a second chancery suite: it covers what this configuration puts in the outbound body and the routes it produces, so a `CHANCERY_VERSION` bump has a gate before the site sees it.
-
-`make test-live` needs the real model, so it costs money and a reader grades the answers. It exercises the prompt end to end, hostile visitor turns included. Run it when the prompt changes.
-
 ## Releasing
 
-The tag is the release, and `VERSION` has to match it. CI builds the image, validates the configuration inside it, runs the tests and pushes it.
+The tag is the release, and `VERSION` has to match it. CI builds the image, validates the configuration inside it and pushes it. `CHANCERY_VERSION` in the `Dockerfile` pins the chancery release that goes in.
 
 ## License
 

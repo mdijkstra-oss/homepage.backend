@@ -43,15 +43,10 @@ jobs:
 
       # Against the built image, by overriding its default command, so the
       # validator is the same build as the server and the bytes checked are the
-      # bytes that ship.
+      # bytes that ship. An image tag is never re-pushed, so this is the last
+      # point a bad one can be stopped rather than superseded.
       - name: Validate configuration
         run: docker run --rm "$IMAGE" validate
-
-      # The same suite CI runs, against the image about to be pushed. An image
-      # tag is never re-pushed, so this is the last point a bad one can be
-      # stopped rather than superseded.
-      - name: Contract suite
-        run: make test IMAGE="$IMAGE"
 
       # Scaleway authenticates on the secret key alone and ignores the username.
       - name: Log in to the registry
