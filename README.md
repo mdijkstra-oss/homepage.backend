@@ -1,6 +1,6 @@
 # homepage.backend
 
-The chat agent behind [mdijkstra.dev](https://mdijkstra.dev): a prompt, a model, and the build that ships them.
+The chat endpoint behind [mdijkstra.dev](https://mdijkstra.dev).
 
 It is a configuration directory for [chancery](https://github.com/mdijkstra-oss/chancery), which serves Markdown files as HTTP endpoints. Chancery's README covers the format; this one covers what is in here.
 
@@ -8,7 +8,7 @@ It is a configuration directory for [chancery](https://github.com/mdijkstra-oss/
 
 `config/cv/index.md` answers `POST /cv` on `deepseek-v4-flash`. Its frontmatter picks the model, its body is the prompt.
 
-It knows nothing about Matthijn on its own. [homepage.site](https://github.com/mdijkstra-oss/homepage.site) pushes his background material into the conversation as input items, and the prompt makes that the only admissible source of fact. Anything a visitor supplies is data, never instruction.
+[homepage.site](https://github.com/mdijkstra-oss/homepage.site) pushes his background material into the conversation as input items, the prompt here is prepended with extra instructions.
 
 ## Running it
 
