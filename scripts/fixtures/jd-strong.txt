@@ -1,0 +1,16 @@
+Staff Software Engineer, Clinical Platform (Remote, EU/US overlap)
+
+We are a Series B digital health company. Our platform delivers guided recovery
+programs to patients and reports outcomes back to clinicians.
+
+You will:
+- Own the architecture of the clinical platform end to end, from data model to delivery
+- Work directly with clinical staff to turn care protocols into product
+- Lead the technical design of a personalization engine for patient programs
+- Set engineering standards across a small distributed team
+- Be hands on: TypeScript and Node in production, React on the front end
+- Help us hire and raise the bar as we grow
+
+Requirements: 8+ years shipping production software, experience in a regulated
+environment (HIPAA or similar), track record as the technical owner of a system,
+comfort with cloud infrastructure and CI/CD.

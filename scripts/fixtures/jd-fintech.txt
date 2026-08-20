@@ -1,0 +1,14 @@
+Senior Backend Engineer, Payments
+
+We build real time payment rails for European banks. You will work on the ledger
+and settlement services that move money.
+
+You will:
+- Build and operate services handling live payment flows in Java and Kotlin
+- Model double entry ledgers and reconciliation
+- Work within PCI DSS scope and with our compliance team on audits
+- Integrate with SEPA Instant and card scheme APIs
+- Own on call for the settlement path
+
+Requirements: 6+ years backend, JVM experience, payments or banking domain knowledge,
+familiarity with financial regulation.

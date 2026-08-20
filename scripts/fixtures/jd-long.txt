@@ -1,0 +1,18 @@
+Principal Engineer, Platform
+
+Requirements:
+- 10+ years of professional software engineering experience
+- Deep expertise in Go and distributed systems design
+- Production experience running Kubernetes at scale
+- Experience with event driven architectures (Kafka, NATS or similar)
+- Strong SQL and data modelling, ideally Postgres
+- Experience with multi region deployments and disaster recovery
+- Demonstrated technical leadership across multiple teams
+- Track record of mentoring senior engineers
+- Experience defining and driving multi quarter technical strategy
+- Comfort with observability tooling and incident command
+- Experience in a regulated industry (finance, health or similar)
+- Excellent written communication, including RFCs and architecture decision records
+
+Nice to have: open source contributions, machine learning exposure, prior startup
+experience, public speaking.

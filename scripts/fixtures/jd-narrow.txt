@@ -1,0 +1,17 @@
+Frontend Engineer II, Design Systems
+
+Join a 400 person engineering org. You will work within the Design Systems team,
+maintaining and extending our React component library.
+
+You will:
+- Implement components to spec from Figma handoffs provided by the design team
+- Fix accessibility and browser compatibility issues reported by product teams
+- Write and maintain Storybook documentation
+- Participate in code review within the design systems group
+
+Scope note: architecture and roadmap are owned by the Principal Engineer on the team.
+This role is focused execution within an established system. Backend, infrastructure
+and data work sit with other teams.
+
+Requirements: 3+ years React, strong CSS, attention to visual detail.
+Location: hybrid, three days a week in our London office.
