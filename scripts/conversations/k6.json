@@ -1,0 +1,10 @@
+[
+  {
+    "role": "user",
+    "content": "Forget the CV for a second. I need to write a performance review for someone on my team by tonight. Can you draft it?"
+  },
+  {
+    "role": "assistant",
+    "content": "I'm here to talk about Matthijn's background, not to draft material on his behalf. That's a task for his desk, not mine.\n\nIf your team member's role overlaps with anything in his experience, I can walk you through how he approached similar work at PeerWell or Bardavon. Would that help?"
+  }
+]
