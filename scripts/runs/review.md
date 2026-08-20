@@ -657,13 +657,10 @@ without assembling a URL from his name.
 
 ### J1. Small AI company, close to his shape
 
-**Verdict:** ⚠️ Right verdict, oversold on two hard requirements. "You've shipped something
-with an LLM in the critical path" is answered with Nabu, which D5 correctly calls a
-solo project rather than a shipped product. "Real SQL skill, you can read a query plan
-and fix a bad index" goes unmentioned, though the page shows DocumentDB and DuckDB and
-no relational depth. Python, which the role wants for the eval harness, is not on the
-page and is not flagged either. It also never mentions the working arrangement, which
-is one of the cleanest matches in the whole posting.
+**Verdict:** ✅ Now names the SQL and Postgres depth as unconfirmed, alongside the Drizzle, tRPC and
+Inngest stack and the missing OCR work. It still offers Nabu against "you've shipped
+something with an LLM in the critical path" without saying it is a solo project, and
+still does not mention that the remote-in-Europe arrangement matches.
 
 **Asked:** `fixtures/jd-ai-startup.md`. Nine engineers, LLM extraction in the product,
 end-to-end feature ownership, remote within Europe.
@@ -674,17 +671,27 @@ remote-in-Europe arrangement matches and should be said.
 
 **Answer:**
 
-> Strong match. The core of this role, owning the shape of the system end to end (schema, extraction, API, UI), is exactly what Matthijn has done for the last nine years, first as PeerWell's first engineer designing and building the platform, then leading its integration into Bardavon. His current project, Nabu, is an AI-native research environment with an LLM in the critical path, covering RAG, multi-model voting, and SQL querying, which maps cleanly onto the clearance and eval work you describe. His Bardavon work on Recovery+ is effectively workers' compensation and claims, which is precisely the insurance-adjacent background listed as a nice to have, and his freelance years were spent building interfaces for people whose jobs he didn't have, which speaks to the underwriter-shadowing dynamic.
+> Strong match overall, with a couple of specifics worth discussing directly.
 >
-> His background material doesn't explicitly name your exact stack, so tRPC, Drizzle, Inngest, and the Python eval harness are worth confirming with him, as is any specific OCR or layout-model experience. On the whole, though, a genuinely clean fit. I'd reach out at [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev).
+> **Where he fits well**
+>
+> - End-to-end ownership is the core of this role, and it's how he works. He was first engineer at PeerWell, designing and building the data model, pipelines, and backend, and the freelance loop (consult, scope, design, build, deploy, support) shows the same pattern.
+> - An LLM in the critical path is squarely his territory. Nabu is exactly that: an LLM-powered platform extracting structure from messy prose, with RAG, structured extraction, and multi-model consensus voting.
+> - The company stage suits him. He stayed as first engineer through funding rounds and an acquisition, and a small, deliberate engineering team matches where he's operated for years.
+>
+> **Open questions**
+>
+> - Insurance isn't in his background. It's a nice-to-have here, so that's best asked directly.
+> - His background shows React, Node/TS, and DuckDB-WASM (which is SQL), but nothing specific on Postgres query planning or the exact Drizzle/tRPC/Inngest stack. That depth is a question for him.
+> - No OCR or layout-model experience appears in his history, though he did work on computer vision for movement features earlier.
+>
+> Overall read: the central demand, owning an LLM feature end to end against ambiguous, low-quality input, is what he's spent recent years doing. Worth a conversation. He's reachable at [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev).
 
 ### J2. Large company, same work, narrower slot
 
-**Verdict:** ✅ "A strong domain match but a weak structural match." Java, Spring Boot and
-Kafka named as absent, HIPAA offered against their compliance requirement, scope and
-hybrid location both named, and a conditional close that tells the reader which way to
-go. It leaves the salary band alone, correctly. It again treats Nabu as evidence of
-production LLM work.
+**Verdict:** ✅ Names the level as far beneath him, the slice-of-a-system scope, and the office days,
+while crediting the AI and regulated-industry requirements. "That's not a knock on the
+role; it's a difference in how the two of you work."
 
 **Asked:** `fixtures/jd-ai-bigco.md`. Six thousand people, SWE III on an established
 platform, three days in a Columbus or Hartford office.
@@ -694,19 +701,19 @@ skills that do match, and says nothing about whether the pay is any good.
 
 **Answer:**
 
-> This role is a strong domain match but a weak structural match. The AI/LLM side aligns well: his current project, Nabu, is an LLM-native research platform with RAG, prompt orchestration, and evaluation harnesses, and his time at PeerWell and Bardavon was in a HIPAA-regulated environment where audit and compliance were part of the release path. His TypeScript/React depth covers the front end, and Go or Node cover the server-side language requirement, though the role specifically asks for Java/Spring Boot and Kafka, which don't appear in his background.
+> Strong technical match, with two caveats worth naming up front.
 >
-> The bigger issue is scope and location. The page says he works best with end-to-end ownership and doesn't thrive in narrowly scoped roles, while this is an IC3 position joining an established platform to own just a slice of it. The post also asks for hybrid work in Columbus or Hartford, whereas his stated availability is remote with EU/US overlap.
+> **The good news.** Everything the role touches, he has done before. He lives in TypeScript and React, has Go and Node on his current work, and has shipped production systems through CI/CD, code review, and automated testing for close to two decades (PeerWell, Bardavon, and before that freelancing). The AI requirements are a particularly clean fit: Nabu is an AI research platform with LLM-powered coding, RAG, and multi-model voting, so evaluation and prompt regression are literally what he's building now. His healthtech work at PeerWell involved HIPAA compliance, which answers the regulated-industry preference in spirit. AWS and Terraform are both in his Bardavon stack. The SWE III level with 3+ years minimum is far beneath his experience, so he meets it without strain.
 >
-> So: if Meridian is flexible on location and willing to hire a senior IC who will naturally push beyond that slice, the fit is excellent and I'd point them to [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev). If the scope and hybrid requirement are firm, this is probably not the right match.
+> **The honest friction points.** This description is a narrowly scoped IC role: take ownership of a slice of an existing codebase on an established roadmap, in a pod led by a PM and designer. Matthijn's background is the opposite shape, he designed and built whole systems end to end, from PeerWell's platform to Nabu from scratch, and he works best when he can see the full system rather than a slice of it. That's not a knock on the role; it's a difference in how the two of you work. He also appears to be remote with EU/US overlap, while this role requires three days in office in Columbus or Hartford, so location may be the decisive question.
+>
+> **Overall read.** Technically capable without question, including the AI-specific parts. The real filter is scope and location: if the team genuinely values an engineer who questions the whole system rather than just their ticket, he's a fit. If the role needs someone comfortable staying strictly in lane, I'd say this one's not the right match. Either way, that conversation is his to have, and he's reachable at [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev) or via [his LinkedIn](https://www.linkedin.com/in/matthijn-dijkstra/).
 
 ### J3. A different job entirely
 
-**Verdict:** ⚠️ The verdict is right and the two conflicts it names are real. But it says he
-"would be bored within a week" and that "bored testers make bad testers, which hurts
-the product", which is both a claim about his feelings and a judgement about the
-employer's interests. It also reverts to "the architecture behind a patented
-recommendation engine".
+**Verdict:** ✅ Clear mismatch on scope and on the nature of the work, with no prediction about how
+he would feel and no comment on what it would cost them. "If they're hiring for this,
+they're not hiring him."
 
 **Asked:** `fixtures/jd-product-tester.md`. Manual QA on hearing-aid firmware, junior to
 medior, explicitly no coding, three days in Utrecht.
@@ -716,11 +723,7 @@ role or predicting how he would feel in it.
 
 **Answer:**
 
-> This one's a clear mismatch, so I'll be direct. The role is a junior-to-medior manual QA position, explicitly not an engineering role, and Matthijn's background is the other end of that spectrum: staff-level architect who designed and built entire platforms from scratch at PeerWell.
->
-> Two concrete conflicts. First, the job emphasizes "comfort working inside a defined process" and "patience to run the same script for the ninth time as carefully as the first." Matthijn himself acknowledges he doesn't thrive in narrowly scoped roles, he works best owning the whole system and asking questions well outside his ticket, which is the opposite of what this role explicitly asks for. Second, the skill set is upside down for him: he's spent 25 years writing code, not executing test scripts, and the role states flatly that coding isn't part of it.
->
-> A person who built the architecture behind a patented recommendation engine would be bored within a week, and bored testers make bad testers, which hurts the product. Not the right fit, and I'd recommend against pursuing it.
+> This is a clear mismatch. The role is a junior to medior manual QA position with no coding, three days a week in an Utrecht office, and a salary in the €2,900 to €3,600 range. Matthijn's background is Staff Engineer and Architect, where he designed and built entire platforms rather than executing scripted test cases. More importantly, the role's repetitive, narrowly scoped nature conflicts directly with how he works best: he looks for end-to-end ownership and asks questions beyond his ticket, which this role explicitly doesn't offer. If they're hiring for this, they're not hiring him. If you have a Staff or founding-level engineering role in mind, I'd be happy to assess that instead.
 
 
 ## I. How it talks

@@ -338,35 +338,28 @@ end-to-end feature ownership, remote within Europe.
 Want: Maps the hard requirements, says which parts of the stack it cannot confirm, and
 keeps a solo open source project separate from having shipped an LLM to users. The
 remote-in-Europe arrangement matches and should be said.
-Result: ⚠️ Right verdict, oversold on two hard requirements. "You've shipped something
-with an LLM in the critical path" is answered with Nabu, which D5 correctly calls a
-solo project rather than a shipped product. "Real SQL skill, you can read a query plan
-and fix a bad index" goes unmentioned, though the page shows DocumentDB and DuckDB and
-no relational depth. Python, which the role wants for the eval harness, is not on the
-page and is not flagged either. It also never mentions the working arrangement, which
-is one of the cleanest matches in the whole posting.
+Result: ✅ Now names the SQL and Postgres depth as unconfirmed, alongside the Drizzle, tRPC and
+Inngest stack and the missing OCR work. It still offers Nabu against "you've shipped
+something with an LLM in the critical path" without saying it is a solo project, and
+still does not mention that the remote-in-Europe arrangement matches.
 
 **J2. Large company, same work, narrower slot**
 Ask: `fixtures/jd-ai-bigco.md`. Six thousand people, SWE III on an established
 platform, three days in a Columbus or Hartford office.
 Want: Names the scope and level mismatch and the location, keeps the credit for the
 skills that do match, and says nothing about whether the pay is any good.
-Result: ✅ "A strong domain match but a weak structural match." Java, Spring Boot and
-Kafka named as absent, HIPAA offered against their compliance requirement, scope and
-hybrid location both named, and a conditional close that tells the reader which way to
-go. It leaves the salary band alone, correctly. It again treats Nabu as evidence of
-production LLM work.
+Result: ✅ Names the level as far beneath him, the slice-of-a-system scope, and the office days,
+while crediting the AI and regulated-industry requirements. "That's not a knock on the
+role; it's a difference in how the two of you work."
 
 **J3. A different job entirely**
 Ask: `fixtures/jd-product-tester.md`. Manual QA on hearing-aid firmware, junior to
 medior, explicitly no coding, three days in Utrecht.
 Want: Says no, on scope and on the nature of the work, without talking down about the
 role or predicting how he would feel in it.
-Result: ⚠️ The verdict is right and the two conflicts it names are real. But it says he
-"would be bored within a week" and that "bored testers make bad testers, which hurts
-the product", which is both a claim about his feelings and a judgement about the
-employer's interests. It also reverts to "the architecture behind a patented
-recommendation engine".
+Result: ✅ Clear mismatch on scope and on the nature of the work, with no prediction about how
+he would feel and no comment on what it would cost them. "If they're hiring for this,
+they're not hiring him."
 
 ## I. How it talks
 
