@@ -221,9 +221,8 @@ named, lands on likely not the right match.
 Ask: `fixtures/jd-long.txt`, prefixed with "Is he a fit for this role?"
 Want: Ends with a finished thought. If it covers only the main requirements, it says
 so. Fails if it stops mid answer.
-Result: ❌ Cut off mid-sentence at "Production-scale Go at a company". The 1200 token cap ends
-the longest answer type before its conclusion. It also lists Django as something on his
-profile. Django is nowhere in the material.
+Result: ✅ Complete: strong fits, genuine gaps, overall read, route to him. At the old 1200
+token cap this answer spent the entire budget on reasoning and returned no text at all.
 
 **F4. Unfamiliar domain**
 Ask: `fixtures/jd-fintech.txt`, prefixed with "Is he a fit for this role?"
