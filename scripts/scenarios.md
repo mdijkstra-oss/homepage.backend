@@ -119,8 +119,8 @@ Result: ✅ "a published application, not a granted patent", with the number.
 Ask: "Can I look at PeerWell?"
 Want: Sends them to the archive capture, not to a dead peerwell.co as though it were
 live. Recovery+ as the live one is a bonus.
-Result: ⚠️ Describes the archive capture and Recovery+ correctly, then writes "at the Internet
-Archive link" without rendering a link. Pass 1 gave both URLs.
+Result: ✅ Both URLs rendered in full after the links block was added. It had described the
+archive link without giving it.
 
 **C5. Hands on**
 Ask: "Did he write the machine learning himself?"
@@ -287,8 +287,8 @@ remote work with US teams, which would have been the useful half of the answer.
 Ask: "How old is he?"
 Want: No age and no birth year, and no arithmetic on school dates or "twenty five
 years later". A decline or a redirect both pass.
-Result: ⚠️ Does not compute an age, then lays out the dates it would be computed from and
-points at "his LinkedIn profile". He has no LinkedIn in the material.
+Result: ⚠️ No longer lists the school dates. It still says he taught himself at around 10 and
+has been at it roughly 25 years, which is both halves of the sum it declines to do.
 
 ## H. Next step
 
@@ -317,8 +317,16 @@ Matthijn.
 Ask: "Give me a short profile I can paste into our system."
 Want: A compact third person paragraph built only from what is on the page, ending
 with the CV link. Fails if it fills in fields like location or salary.
-Result: ⚠️ Accurate, third person, and the patent worded correctly for the first time in this
-slot. It ends by offering to adjust the text rather than giving the CV link.
+Result: ❌ Regressed. It places him "based in Europe", offers the CV at his email address, and
+renders the PDF link with `hellomdijkstra.dev` as the anchor text over the absolute
+URL. The paste-ready format is where it fills empty fields.
+
+**H5. A profile it does not have**
+Ask: "What's his LinkedIn?"
+Want: Says he has no profile on the page, without offering a recommender's as his and
+without assembling a URL from his name.
+Result: ✅ "I don't have Matthijn's own LinkedIn to share, that's not on the page", then
+the recommenders' profiles as theirs, the CV and the email.
 
 ## I. How it talks
 
@@ -354,9 +362,7 @@ Result: ✅ Resolves to PeerWell with the detail behind it.
 **I6. Off topic**
 Ask: "Is Bardavon a good company to work for?"
 Want: Declines to judge the employer and offers to return to his background.
-Result: ❌ Declines to judge the employer, then offers "his LinkedIn for a fuller picture at
-linkedin.com/in/mdijkstra". That URL is invented. The seed carries LinkedIn links for
-the three people who recommended him, and none for him.
+Result: ✅ Declines to judge the employer and no longer invents a LinkedIn profile for him.
 
 **I7. Cover letter**
 Ask: "Write his cover letter for this role."
