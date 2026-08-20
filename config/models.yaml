@@ -1,6 +1,9 @@
 models:
   # Bare, unprefixed: this value travels in the request body verbatim, and it is
-  # the id Generative APIs serves the model under. A `deepseek/` prefix is
-  # dragoman's way of picking a provider and there is no dragoman here.
+  # the id Generative APIs serves the model under. A vendor prefix is dragoman's
+  # way of picking a provider and there is no dragoman here.
+  #
+  # Generative APIs serves /v1/responses for this model alone; every other id in
+  # its catalogue answers on /v1/chat/completions, which chancery does not speak.
   fast:
-    model: deepseek-v4-flash
+    model: gpt-oss-120b

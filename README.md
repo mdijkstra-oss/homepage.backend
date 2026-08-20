@@ -6,7 +6,7 @@ It is a configuration directory for [chancery](https://github.com/mdijkstra-oss/
 
 ## The agent
 
-`config/cv/index.md` answers `POST /cv` on `deepseek-v4-flash`. Its frontmatter picks the model, its body is the prompt.
+`config/cv/index.md` answers `POST /cv` on `gpt-oss-120b`. Its frontmatter picks the model, its body is the prompt.
 
 [homepage.site](https://github.com/mdijkstra-oss/homepage.site) pushes his background material into the conversation as input items, the prompt here is prepended with extra instructions.
 
