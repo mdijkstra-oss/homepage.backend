@@ -1,6 +1,7 @@
 models:
-  # Bare, unprefixed: this value travels in the request body verbatim, and it is
-  # the id the provider serves the model under. A vendor prefix is dragoman's
-  # way of picking a provider and there is no dragoman here.
+  # The prefix is how dragoman picks a provider: it splits on the first slash,
+  # keeps `scaleway` for itself and asks that endpoint for the rest. Scaleway
+  # serves this id on /chat/completions, which chancery does not speak — the
+  # translation is the reason dragoman is in the path at all.
   fast:
-    model: gpt-5.6-luna
+    model: scaleway/deepseek-v4-flash-0731

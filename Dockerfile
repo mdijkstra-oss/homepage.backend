@@ -16,7 +16,7 @@ RUN apk add --no-cache ca-certificates
 # sum.golang.org records its checksum, so this string resolves to the same bytes
 # forever: a tag moved in git afterwards surfaces as a checksum mismatch rather
 # than as different software under the same name.
-ARG CHANCERY_VERSION=v0.1.0
+ARG CHANCERY_VERSION=v0.2.0
 
 # CGO off is what makes the binary static, which is what a scratch final stage
 # can hold. -s -w drop the symbol table and DWARF; -trimpath keeps build paths

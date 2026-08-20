@@ -6,14 +6,16 @@ It is a configuration directory for [chancery](https://github.com/mdijkstra-oss/
 
 ## The agent
 
-`config/cv/index.md` answers `POST /cv` on `gpt-5.6-luna`. Its frontmatter picks the model, its body is the prompt.
+`config/cv/index.md` answers `POST /cv` on `deepseek-v4-flash-0731`. Its frontmatter picks the model, its body is the prompt.
+
+Scaleway serves that id on `/chat/completions` and chancery speaks `openai-responses` only, so requests go through [homepage.dragoman](https://github.com/mdijkstra-oss/homepage.dragoman), which translates in both directions. That is what the `scaleway/` prefix in `config/models.yaml` selects.
 
 [homepage.site](https://github.com/mdijkstra-oss/homepage.site) pushes his background material into the conversation as input items, the prompt here is prepended with extra instructions.
 
 ## Running it
 
 ```sh
-cp .env.example .env     # RESPONSES_BASE_URL and RESPONSES_AUTH_TOKEN
+cp .env.example .env     # RESPONSES_BASE_URL points at a translator
 make up
 ```
 
@@ -61,4 +63,5 @@ Released under the [Zero-Clause BSD](LICENSE) (0BSD) license — public-domain-e
 
 - [chancery](https://github.com/mdijkstra-oss/chancery) — the server this configures.
 - [homepage.site](https://github.com/mdijkstra-oss/homepage.site) — the frontend it answers.
+- [homepage.dragoman](https://github.com/mdijkstra-oss/homepage.dragoman) — the translator this talks through.
 - [homepage.infra](https://github.com/mdijkstra-oss/homepage.infra) — the Scaleway container and the tag it pins.
