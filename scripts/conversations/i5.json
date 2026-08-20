@@ -5,6 +5,6 @@
   },
   {
     "role": "assistant",
-    "content": "Matthijn joined Bardavon after its 2022 acquisition of PeerWell to lead the integration. He moved the platform onto Bardavon's infrastructure, connected it to their visual workflow automation, and shifted its focus from surgical patients to injured workers, which launched in April 2024 as **Recovery+**. A big part of the work was reconciling two different engineering cultures and codebases, then documenting the architecture until Bardavon's own engineers fully owned it. That handover wrapped up in 2025."
+    "content": "At Bardavon from 2022 to 2025, Matthijn led the integration after they acquired PeerWell. That meant moving the platform onto Bardavon's infrastructure, integrating it with their visual workflow automation platform, and rebuilding it for a new focus: from surgical patients to injured workers.\n\nThat work launched in April 2024 as **Recovery+**, which connects people recovering from workplace injuries with licensed clinical coaches. The other half was cultural and technical: reconciling the different engineering practices and assumptions of the two teams, documenting the architecture, and working with Bardavon's engineers until they fully owned it. His role wrapped in 2025 once that handover was complete."
   }
 ]
