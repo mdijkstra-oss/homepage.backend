@@ -19,6 +19,36 @@ make up
 
 `compose.yaml` mounts `./config` read-only over the copy the image baked, so a prompt edit locally costs a restart rather than a rebuild. Production mounts nothing.
 
+## Testing a conversation
+
+`scripts/` replays a whole conversation against the agent from the terminal, without a
+browser. It reads the background material straight out of the site repo, so what it sends
+is what a visitor sends.
+
+```sh
+make seed                                    # pull the background material -> scripts/seed.json
+make ask Q="What did he build at PeerWell?"  # seed + question -> answer
+```
+
+`ask` starts the agent itself if it is not already up, and reuses it on every run after
+that. `make stop` takes it down and `make restart` picks up a prompt edit.
+
+It is the same compose service as `make up`, under a second project name and on port 8090
+instead of 8081, so the two run side by side and `make stop` never touches the other one.
+`HARNESS_PORT` moves it, and `AGENT_URL` points the question somewhere else entirely,
+production included.
+
+`seed` imports `PORTFOLIO_CHAT_HISTORY` from a homepage.site checkout, `../site` by
+default and `SITE_REPO` otherwise.
+
+Prior turns live in `scripts/conversations/*.json` as a plain list of roles and content.
+Pass one to ask a follow-up in context, and add `SAVE=1` to append the exchange so the
+next run picks up where this one stopped.
+
+```sh
+make ask Q="Which of those was hardest?" TURNS=conversations/example.json SAVE=1
+```
+
 ## Releasing
 
 The tag is the release, and `VERSION` has to match it. CI builds the image, validates the configuration inside it and pushes it. `CHANCERY_VERSION` in the `Dockerfile` pins the chancery release that goes in.

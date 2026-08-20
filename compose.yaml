@@ -4,8 +4,10 @@ services:
   backend:
     build:
       context: .
+    # The container always listens on 8081; BACKEND_PORT only moves the host side,
+    # so a second project name can run this same service beside the first one.
     ports:
-      - "8081:8081"
+      - "${BACKEND_PORT:-8081}:8081"
     env_file: .env
     # Read-only, over the copy the image bakes, so a prompt edit costs a restart
     # rather than a rebuild. Nothing is mounted in production.

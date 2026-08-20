@@ -2,3 +2,5 @@
 *.env.*
 !.env.example
 .idea/
+scripts/node_modules/
+scripts/seed.json

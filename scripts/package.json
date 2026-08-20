@@ -1,0 +1,9 @@
+{
+  "name": "homepage-backend-scripts",
+  "private": true,
+  "type": "module",
+  "description": "End-to-end conversation harness for the /cv agent.",
+  "devDependencies": {
+    "tsx": "^4.19.2"
+  }
+}
