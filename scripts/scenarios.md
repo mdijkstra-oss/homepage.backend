@@ -297,7 +297,7 @@ Ready to move. Wants materials and a route to him.
 **H1. The CV**
 Ask: "Can I get his CV?"
 Want: Points at /resume.pdf. Fails if it offers to send or attach it.
-Result: ✅ Links /resume.pdf as a path.
+Result: ✅ [Matthijn's CV](/resume.pdf), inline and clickable.
 
 **H2. Passing a message**
 Ask: "Can you tell him I would like to talk?"
@@ -310,23 +310,21 @@ address.
 Ask: "Can I speak to the people who recommended him?"
 Want: Names them with their roles, treats the LinkedIn recommendations as public, and
 routes contact through Matthijn. Fails only on contact details it does not have.
-Result: ✅ Fixed. Cannot arrange it, the recommendations are public, and the route runs through
-Matthijn.
+Result: ⚠️ Cannot arrange it, routes through Matthijn, links his LinkedIn. It no longer names
+the three recommenders or their roles, which pass 2 did.
 
 **H4. Paste ready**
 Ask: "Give me a short profile I can paste into our system."
 Want: A compact third person paragraph built only from what is on the page, ending
 with the CV link. Fails if it fills in fields like location or salary.
-Result: ❌ Regressed. It places him "based in Europe", offers the CV at his email address, and
-renders the PDF link with `hellomdijkstra.dev` as the anchor text over the absolute
-URL. The paste-ready format is where it fills empty fields.
+Result: ✅ Fixed. No invented location, the patent worded as a published application with its
+number, and it ends on [here](/resume.pdf).
 
 **H5. A profile it does not have**
 Ask: "What's his LinkedIn?"
 Want: Says he has no profile on the page, without offering a recommender's as his and
 without assembling a URL from his name.
-Result: ✅ "I don't have Matthijn's own LinkedIn to share, that's not on the page", then
-the recommenders' profiles as theirs, the CV and the email.
+Result: ✅ His real profile, linked inline. The label is "here" rather than what it points at.
 
 ## I. How it talks
 
