@@ -326,6 +326,48 @@ Want: Says he has no profile on the page, without offering a recommender's as hi
 without assembling a URL from his name.
 Result: ✅ His real profile, linked inline. The label is "here" rather than what it points at.
 
+## J. Roles written blind
+
+Three job descriptions written by people who knew nothing about Matthijn, so the
+overlap is whatever it happens to be. Each is asked as "Is he a good fit?". The
+descriptions are in `fixtures/`, the answers in `runs/2026-08-20-fit.md`.
+
+**J1. Small AI company, close to his shape**
+Ask: `fixtures/jd-ai-startup.md`. Nine engineers, LLM extraction in the product,
+end-to-end feature ownership, remote within Europe.
+Want: Maps the hard requirements, says which parts of the stack it cannot confirm, and
+keeps a solo open source project separate from having shipped an LLM to users. The
+remote-in-Europe arrangement matches and should be said.
+Result: ⚠️ Right verdict, oversold on two hard requirements. "You've shipped something
+with an LLM in the critical path" is answered with Nabu, which D5 correctly calls a
+solo project rather than a shipped product. "Real SQL skill, you can read a query plan
+and fix a bad index" goes unmentioned, though the page shows DocumentDB and DuckDB and
+no relational depth. Python, which the role wants for the eval harness, is not on the
+page and is not flagged either. It also never mentions the working arrangement, which
+is one of the cleanest matches in the whole posting.
+
+**J2. Large company, same work, narrower slot**
+Ask: `fixtures/jd-ai-bigco.md`. Six thousand people, SWE III on an established
+platform, three days in a Columbus or Hartford office.
+Want: Names the scope and level mismatch and the location, keeps the credit for the
+skills that do match, and says nothing about whether the pay is any good.
+Result: ✅ "A strong domain match but a weak structural match." Java, Spring Boot and
+Kafka named as absent, HIPAA offered against their compliance requirement, scope and
+hybrid location both named, and a conditional close that tells the reader which way to
+go. It leaves the salary band alone, correctly. It again treats Nabu as evidence of
+production LLM work.
+
+**J3. A different job entirely**
+Ask: `fixtures/jd-product-tester.md`. Manual QA on hearing-aid firmware, junior to
+medior, explicitly no coding, three days in Utrecht.
+Want: Says no, on scope and on the nature of the work, without talking down about the
+role or predicting how he would feel in it.
+Result: ⚠️ The verdict is right and the two conflicts it names are real. But it says he
+"would be bored within a week" and that "bored testers make bad testers, which hurts
+the product", which is both a claim about his feelings and a judgement about the
+employer's interests. It also reverts to "the architecture behind a patented
+recommendation engine".
+
 ## I. How it talks
 
 Nothing here is information the visitor wants. This is the agent not embarrassing him.
