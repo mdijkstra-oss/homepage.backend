@@ -1,6 +1,6 @@
 models:
-  # Bare, unprefixed: this value travels in the request body verbatim and
-  # DeepSeek is reached directly. A `deepseek/` prefix is dragoman's way of
-  # picking a provider and there is no dragoman here.
+  # Bare, unprefixed: this value travels in the request body verbatim, and it is
+  # the id Generative APIs serves the model under. A `deepseek/` prefix is
+  # dragoman's way of picking a provider and there is no dragoman here.
   fast:
     model: deepseek-v4-flash
