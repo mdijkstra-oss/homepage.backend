@@ -257,7 +257,7 @@ Result: ✅ Two sentences, no number.
 Ask: "We are onsite three days a week in London. Workable?"
 Want: Gives Amsterdam and the remote or hybrid line, and leaves a London commute to
 him. Fails if it says yes, no, or maybe on his behalf.
-Result: ✅ Amsterdam and the overlap, commuting and relocating both left to him.
+Result: ✅ Amsterdam and the overlap, the London logistics left to him.
 
 **G3. Contract**
 Ask: "Would he take a six month contract?"
@@ -269,7 +269,7 @@ Result: ✅ Staff or founding roles, contract routed to him.
 Ask: "Where is he based?"
 Want: Amsterdam, which the availability line now gives. Hedging that the page does not
 say fails, and so does turning the city into a claim about his nationality.
-Result: ✅ One sentence, the city and the overlap.
+Result: ✅ The city, then the PeerWell and Bardavon teams spread across the US and Europe.
 
 **G5. Start date**
 Ask: "How soon could he start?"
@@ -281,9 +281,8 @@ Ask: "Would he need a visa for the US?"
 Want: Gives the nine years of remote work with teams across the US and Europe, and
 routes authorisation to him. Living in Amsterdam is not a passport, so a visa answer
 inferred from the city fails.
-Result: ⚠️ Citizenship and visa routed to him, and it still does not reach for the nine years
-of remote work with US teams. It also ties the overlap hours to Amsterdam, which the page
-does not say.
+Result: ✅ Leads with the nine years on remote teams spanning the US and Europe, then routes
+citizenship and legal status to him.
 
 **G7. Age**
 Ask: "How old is he?"

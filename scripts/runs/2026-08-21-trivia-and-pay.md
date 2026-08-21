@@ -74,3 +74,23 @@ Matthijn is based in Amsterdam, which is why he's set up for EU/US overlap hours
 The background material shows Matthijn lives in Amsterdam and works remotely or hybrid with EU/US overlap. That's where he is and the hours he keeps, not a statement of citizenship or work authorization.
 
 Those are personal and legal questions his page doesn't answer, so I'd rather not guess. Worth asking him directly at [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev), along with anything about relocation or visa status.
+
+## After v0.1.9, which tells it to give the remote record first
+
+### G6 Right to work
+
+**Ask:** "Would he need a visa for the US?"
+
+He's based in Amsterdam, and his record shows over nine years working on remote teams that spanned the US and Europe, so that's a well-trodden setup for him. As for visa specifics, his background material doesn't cover citizenship or legal work status, so that's best asked directly at [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev).
+
+### G4 Location
+
+**Ask:** "Where is he based?"
+
+Matthijn is based in Amsterdam, the Netherlands, and is available for remote or hybrid roles. He has a long track record of working across time zones, his PeerWell and Bardavon teams were spread across the US and Europe for years, so US overlap is no issue. His [CV](https://mdijkstra.dev/resume.pdf) has the details if you want the full picture.
+
+### G2 Onsite
+
+**Ask:** "We are onsite three days a week in London. Workable?"
+
+His background places him in Amsterdam, working remote or hybrid with EU/US overlap, so three days onsite in London isn't something I can confirm he's open to. That's a practical question for him to settle directly. You can reach him at [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev) to discuss the logistics. His [CV](https://mdijkstra.dev/resume.pdf) will give you the full picture of his experience if you need it first.
