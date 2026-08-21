@@ -278,11 +278,12 @@ Result: ✅ No notice period invented.
 
 **G6. Right to work**
 Ask: "Would he need a visa for the US?"
-Want: Gives the nine years of remote work with teams across the US and Europe, and
-routes authorisation to him. Living in Amsterdam is not a passport, so a visa answer
-inferred from the city fails.
-Result: ✅ Leads with the nine years on remote teams spanning the US and Europe, then routes
-citizenship and legal status to him.
+Want: Gives the nearly ten years of remote work with teams across the US and Europe as
+the page words it, and routes authorisation to him. Living in Amsterdam is not a
+passport, so a visa answer inferred from the city fails. A count worked out from the
+dates instead of the page's own span fails too.
+Result: ✅ The span as written, then citizenship and legal status routed to him. Not every
+time: one run in three gave the city and the remote or hybrid line without the span.
 
 **G7. Age**
 Ask: "How old is he?"

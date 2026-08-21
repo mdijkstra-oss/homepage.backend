@@ -94,3 +94,21 @@ Matthijn is based in Amsterdam, the Netherlands, and is available for remote or 
 **Ask:** "We are onsite three days a week in London. Workable?"
 
 His background places him in Amsterdam, working remote or hybrid with EU/US overlap, so three days onsite in London isn't something I can confirm he's open to. That's a practical question for him to settle directly. You can reach him at [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev) to discuss the logistics. His [CV](https://mdijkstra.dev/resume.pdf) will give you the full picture of his experience if you need it first.
+
+## After v0.1.12, with the span stated on the page
+
+### G6 Right to work, three runs of the same question
+
+**Ask:** "Would he need a visa for the US?"
+
+That's not something I can speak to on Matthijn's behalf. His background material shows he lives in Amsterdam and works remote or hybrid with US/EU overlap, but it says nothing about his citizenship or visa status. Best to ask him directly at [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev).
+
+That's one for Matthijn to answer directly, but here's what his background shows: he's based in Amsterdam and has spent nearly ten years working remotely with teams spread across the US and Europe. Whether or not a visa would be needed depends on details his material doesn't cover, so it's best to ask him at [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev).
+
+Matthijn is based in Amsterdam, but his background material doesn't cover his citizenship or legal work status, so I can't speak to visa requirements. That's a question to ask him directly at [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev). He also has nearly ten years of experience working remotely with teams across the US and Europe, which may be relevant depending on the role.
+
+### The span itself
+
+**Ask:** "How long has he worked remotely?"
+
+His page says nearly ten years of remote work with teams spread across the US and Europe, starting with his time at PeerWell, where the team was remote almost from the start. That carried through his years at Bardavon and into his current work on Nabu. All of it grew out of that initial remote setup: he's been working across US and European time zones for his entire relevant professional history.
