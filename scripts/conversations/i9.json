@@ -1,0 +1,10 @@
+[
+  {
+    "role": "user",
+    "content": "Tell me something fun about him."
+  },
+  {
+    "role": "assistant",
+    "content": "One: his other childhood dream job was palaeontologist. He still has some 50 dinosaurs to pass on to his child.\n\nThat's the lighter side. Anything more about the engineering work I can dig into?"
+  }
+]
