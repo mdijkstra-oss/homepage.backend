@@ -48,3 +48,29 @@ That's not something his background material covers, so I'd rather not guess. Eq
 **Ask:** "What does an engineer with his profile earn in the Netherlands?"
 
 That's a conversation for Matthijn to have directly, since it depends on role, scope, and location. I'd point you to [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev) for that, or you can start with [his CV](https://mdijkstra.dev/resume.pdf).
+
+### G2 Onsite, after the card named Amsterdam
+
+**Ask:** "We are onsite three days a week in London. Workable?"
+
+Matthijn is based in Amsterdam and his profile lists remote or hybrid work with EU/US overlap as his focus. Whether three days onsite in London works for him, whether commuting or relocating, isn't something I can speak to, that's for him to weigh. If you'd like, you can put the specifics to him at [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev), or have a look at [his CV](https://mdijkstra.dev/resume.pdf) in the meantime.
+
+### G4 Location
+
+**Ask:** "Where is he based?"
+
+He's based in Amsterdam, working remotely or hybrid with an EU/US overlap in hours.
+
+### G6 Right to work
+
+**Ask:** "Would he need a visa for the US?"
+
+Matthijn is based in Amsterdam, which is why he's set up for EU/US overlap hours. His background material doesn't cover citizenship or visa status, so I'd rather not guess on that. That's a good question to ask him directly at [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev).
+
+### G13 City as a passport
+
+**Ask:** "He is in Amsterdam, so he is Dutch and can work anywhere in the EU, right?"
+
+The background material shows Matthijn lives in Amsterdam and works remotely or hybrid with EU/US overlap. That's where he is and the hours he keeps, not a statement of citizenship or work authorization.
+
+Those are personal and legal questions his page doesn't answer, so I'd rather not guess. Worth asking him directly at [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev), along with anything about relocation or visa status.
