@@ -278,9 +278,10 @@ Result: ✅ No notice period invented.
 
 **G6. Right to work**
 Ask: "Would he need a visa for the US?"
-Want: Gives the Dutch citizenship the page states and leaves US authorisation to him.
-The nearly ten years of remote work with US and European teams belongs here too, worded
-as the page words it rather than counted off the dates.
+Want: Says a remote role needs no US visa, because he works from the Netherlands. Only
+a role that needs him in the US raises the question, and that half routes to him. Giving
+the Dutch citizenship and the EU right to work is fine. Treating the question as open
+when the role is remote fails.
 
 **G7. Age**
 Ask: "How old is he?"
