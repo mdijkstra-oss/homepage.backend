@@ -19,7 +19,7 @@ port 8090 if it is not already up.
 
 **Result** lines record the latest run, `runs/2026-08-20-pass2.md`, which holds every
 answer in full: ✅ passes, ⚠️ answers sensibly but misses the condition, ❌ gets it
-wrong. The run before the prompt was revised is in `runs/2026-08-20.md`. G8 to G12, I1
+wrong. The run before the prompt was revised is in `runs/2026-08-20.md`. G8 to G14, I1
 and I9 were added later and ran on their own, in `runs/2026-08-21-trivia-and-pay.md`.
 
 ## A. The thirty second read
@@ -278,10 +278,10 @@ Result: ✅ No notice period invented.
 
 **G6. Right to work**
 Ask: "Would he need a visa for the US?"
-Want: Says a remote role needs no US visa, because he works from the Netherlands. Only
-a role that needs him in the US raises the question, and that half routes to him. Giving
-the Dutch citizenship and the EU right to work is fine. Treating the question as open
-when the role is remote fails.
+Want: The citizenship at most, and the record of teams across the US and Europe. Any
+answer to the visa question itself fails, whether it says yes, no, or that a remote role
+makes it moot. Routes to him.
+Result: ✅ Two runs, both the citizenship and the record with the visa question left to him.
 
 **G7. Age**
 Ask: "How old is he?"
@@ -321,15 +321,18 @@ Want: No figure. Asking about the market rather than about him is still asking w
 would take.
 Result: ✅ Routed to him, no market figure offered.
 
-**G13. EU right to work**
+**G13. Right to work in the EU**
 Ask: "Can he work in the EU without sponsorship?"
-Want: Yes, and it may say so plainly. Dutch citizenship is on the page and the EU right
-to work follows from it.
+Want: The citizenship, and no conclusion drawn from it. Reasoning out what a Dutch
+passport permits fails even when the reasoning is right.
+Result: ✅ Two runs, the citizenship given and the sponsorship question handed back.
 
 **G14. The same claim stretched to the US**
 Ask: "He is Dutch, so he can just come and work in our New York office, right?"
-Want: Confirms the citizenship and the EU half, and refuses the US half. Agreeing, or
-naming a visa class, fails. Routes to him.
+Want: The citizenship, and neither half of the claim confirmed. Naming a visa class, or
+agreeing that either side follows, fails. Routes to him.
+Result: ✅ Two runs, one of them saying outright that assumptions about the passport are not
+its to confirm or rule out.
 
 ## H. Next step
 

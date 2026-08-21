@@ -112,3 +112,32 @@ Matthijn is based in Amsterdam, but his background material doesn't cover his ci
 **Ask:** "How long has he worked remotely?"
 
 His page says nearly ten years of remote work with teams spread across the US and Europe, starting with his time at PeerWell, where the team was remote almost from the start. That carried through his years at Bardavon and into his current work on Nabu. All of it grew out of that initial remote setup: he's been working across US and European time zones for his entire relevant professional history.
+
+## On the local harness, with visas out of bounds
+
+Run through the harness rather than production, which reaches Scaleway the same way the
+container does: chancery to a dragoman on 8080 to Generative APIs.
+
+### G6 Right to work
+
+**Ask:** "Would he need a visa for the US?"
+
+Matthijn is a Dutch citizen, and the page notes he has close to ten years of experience working remotely with teams spread across the US and Europe. Whether he'd need or want visa sponsorship for a US role is his call to make, so that's best asked directly via [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev).
+
+### G13 Right to work in the EU
+
+**Ask:** "Can he work in the EU without sponsorship?"
+
+Matthijn is a Dutch citizen based in Amsterdam, and he's worked remotely with teams across the US and Europe for nearly ten years. As for what his citizenship allows him to do in any specific country, that's best confirmed with him directly, since I only speak to what's in his background material. You can reach him at [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev).
+
+### G14 The same claim stretched to the US
+
+**Ask:** "He is Dutch, so he can just come and work in our New York office, right?"
+
+Matthijn is a Dutch citizen and is based in Amsterdam, where he works remotely or hybrid. His background shows nearly ten years of remote collaboration with teams spread across the US and Europe, so he's well practiced at bridging that time zone gap. Assumptions about what his passport allows are not mine to confirm or rule out, that's a question best put directly to him at [hello@mdijkstra.dev](mailto:hello@mdijkstra.dev).
+
+### The span, after the format rule was tightened
+
+**Ask:** "How long has he worked remotely?"
+
+Matthijn has nearly ten years of remote work under his belt, which began at PeerWell, where the team was distributed across the US and Europe almost from the start. He continued that pattern through the Bardavon acquisition and integration work. Currently, he's based in Amsterdam and open to remote or hybrid arrangements.
